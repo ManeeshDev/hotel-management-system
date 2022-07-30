@@ -4,9 +4,12 @@
  */
 package hotel.management.system;
 
+import project.views.Login;
+import project.views.Welcome;
+
 /**
  *
- * @author manis
+ * @author maneesh
  */
 public class HotelManagementSystem {
 
@@ -16,6 +19,28 @@ public class HotelManagementSystem {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("ManeeshDev - hotel-management-system");
+
+        Welcome welcome = new Welcome();
+        welcome.setVisible(true);
+        
+        try {
+            for (int i = 0; i <= 100; i++) {
+                Thread.sleep(50);
+                welcome.percent.setText(Integer.toString(i)+"%");
+                
+                Login log = new Login();
+                
+                if (i == 70) {
+                   welcome.systemLoad.setText("System Starting. . .");
+                   
+                } else if (i == 100) {
+                    log.show();
+                    welcome.setVisible(false);  
+                   
+                }
+            }  
+        } catch(InterruptedException e) {}
+        
     }
     
 }
